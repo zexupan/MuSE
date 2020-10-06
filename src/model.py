@@ -119,15 +119,12 @@ class TemporalConvNet(nn.Module):
             a = self.se_net[i](torch.cat((a,v_2),1))
             est_a_emb.append(self.audio_linear[i](a.squeeze()))
             a = torch.repeat_interleave(a, repeats=K, dim=2)
-            # x = torch.cat((a.detach(), x, v),1)
             x = torch.cat((a, x, v),1)
             x = self.tcn[i](x)
             
         x = self.mask_conv1x1(x)
         x = F.relu(x)
         est_a_emb = torch.stack(est_a_emb)
-# 
-        # return a.squeeze()[:,0], x
         return est_a_emb, x
 
 class SpeakerEmbedding(nn.Module):

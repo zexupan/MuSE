@@ -64,8 +64,6 @@ if __name__ == '__main__':
                         help='directory including test data')
     parser.add_argument('--mixture_direc', type=str, default='/home/panzexu/datasets/LRS2/audio/2_mix_min/',
                         help='directory of audio')
-    parser.add_argument('--target_Ae_direc', type=str, default='/home/panzexu/datasets/LRS2/xvector_min/',
-                        help='directory of audio embedding')
 
 
     # Training    

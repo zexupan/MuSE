@@ -138,10 +138,10 @@ class Solver(object):
     def _run_one_epoch(self, data_loader, state):
         total_loss = 0
         total_loss_speaker = 0
-        total_acc_0=0
-        total_acc_1=0
-        total_acc_2=0
-        total_acc_3=0
+        # total_acc_0=0
+        # total_acc_1=0
+        # total_acc_2=0
+        # total_acc_3=0
         speaker_loss=0
         for i, (a_mix, a_tgt, v_tgt, speaker) in enumerate(data_loader):
             a_mix = a_mix.cuda().squeeze().float()
@@ -160,10 +160,10 @@ class Solver(object):
                                 self.ae_loss(est_speaker[3], speaker)
                 loss = sisnr_loss + 0.1* speaker_loss #*np.power(0.96,self.joint_loss_weight-1)
 
-                total_acc_0 += self.cal_acc(est_speaker[0],speaker)
-                total_acc_1 += self.cal_acc(est_speaker[1],speaker)
-                total_acc_2 += self.cal_acc(est_speaker[2],speaker)
-                total_acc_3 += self.cal_acc(est_speaker[3],speaker)         
+                # total_acc_0 += self.cal_acc(est_speaker[0],speaker)
+                # total_acc_1 += self.cal_acc(est_speaker[1],speaker)
+                # total_acc_2 += self.cal_acc(est_speaker[2],speaker)
+                # total_acc_3 += self.cal_acc(est_speaker[3],speaker)         
   
                 if state == 'train':
                     self.optimizer.zero_grad()
@@ -181,10 +181,10 @@ class Solver(object):
             total_loss += loss.data
             total_loss_speaker += speaker_loss
  
-        print("speaker recognition acc: %s"%str(total_acc_0/(i+1)*100))
-        print("speaker recognition acc: %s"%str(total_acc_1/(i+1)*100))
-        print("speaker recognition acc: %s"%str(total_acc_2/(i+1)*100))
-        print("speaker recognition acc: %s"%str(total_acc_3/(i+1)*100))
+        # print("speaker recognition acc: %s"%str(total_acc_0/(i+1)*100))
+        # print("speaker recognition acc: %s"%str(total_acc_1/(i+1)*100))
+        # print("speaker recognition acc: %s"%str(total_acc_2/(i+1)*100))
+        # print("speaker recognition acc: %s"%str(total_acc_3/(i+1)*100))
         return total_loss / (i+1), total_loss_speaker/ (i+1)
 
     def _reduce_tensor(self, tensor):

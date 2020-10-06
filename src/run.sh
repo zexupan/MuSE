@@ -1,6 +1,6 @@
 #!/bin/sh
 
-gpu_id=7,8
+gpu_id=3
 continue_from=
 
 if [ -z ${continue_from} ]; then
@@ -13,7 +13,7 @@ fi
 CUDA_VISIBLE_DEVICES="$gpu_id" \
 python -W ignore \
 -m torch.distributed.launch \
---nproc_per_node=2 \
+--nproc_per_node=1 \
 --master_port=1236 \
 main.py \
 \
