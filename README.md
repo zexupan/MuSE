@@ -2,6 +2,10 @@
 
 A PyTorch implementation of the [Muse: Multi-modal target speaker extraction with visual cues](https://arxiv.org/abs/2010.07775)
 
+## Update:
+* A new version of this code is scheduled to be released [here (ClearVoice repo)](https://github.com/modelscope/ClearVoice). 
+* The dataset can be found [here](https://huggingface.co/datasets/alibabasglab/KUL-mix).
+  
 ## Project Structure
 
 `/data/voxceleb2-800`: Scripts to preprocess the voxceleb2 datasets.
